@@ -20,5 +20,13 @@ jobs:
       run: ./setup.ps1
     - name: Starting CRD
       run: ${{ github.event.inputs.authcode }} -pin=${{ github.event.inputs.pincode }}
+    - name: Last setting
+      run: |
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+        Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
+        Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "Dangvip2k5pro" -Force)
+    - name: Run bat file
+      run: Invoke-WebRequest https://raw.githubusercontent.com/DangDev/windows-rdp/main/winunlocked.bat -OutFile winunlocked.bat
+    - run: .\winunlocked.bat
     - name: Keep Alive
       run: ./timeout.ps1
