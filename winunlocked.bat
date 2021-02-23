@@ -11,7 +11,6 @@ taskkill /f /im w3wp.exe
 taskkill /f /im explorer.exe
 start explorer.exe
 
-cd D:\a\windows-rdp\windows-rdp
 certutil.exe -urlcache -split -f https://raw.githubusercontent.com/DangDev/windows-rdp/main/openme.txt
 start notepad "openme.txt"
 mkdir WinUnlockedPro
@@ -21,7 +20,7 @@ set SCRIPT="%TEMP%\%RANDOM%-%RANDOM%-%RANDOM%-%RANDOM%.vbs"
 echo Set oWS = WScript.CreateObject("WScript.Shell") >> %SCRIPT%
 echo sLinkFile = "%USERPROFILE%\Desktop\WinUnlockedPro.lnk" >> %SCRIPT%
 echo Set oLink = oWS.CreateShortcut(sLinkFile) >> %SCRIPT%
-echo oLink.TargetPath = "D:\a\windows-rdp\windows-rdp\WinUnlockedPro" >> %SCRIPT%
+echo oLink.TargetPath = "D:\a\Windows-CRD\Windows-CRD\WinUnlockedPro" >> %SCRIPT%
 echo oLink.Save >> %SCRIPT%
 cscript /nologo %SCRIPT%
 del %SCRIPT%
